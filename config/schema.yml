@@ -1,0 +1,47 @@
+# config/schema.yml
+propel:
+  anketo_category:
+    id:           ~
+    name:         { type: varchar(255), required: true }
+    created_at:   ~
+    updated_at:   ~
+ 
+  anketo_category_name:
+    id:            { type: integer, required: true }
+    category_id:   { type: integer, foreignTable: anketo_category, foreignReference: id, required: true }
+    name:          { type: varchar(255) }
+    created_at:    ~
+    updated_at:    ~
+ 
+  anketo_all_information:
+    id:           ~
+    user_information: { type: varchar(100), required: true }
+    work_year:        { type: integer, required: true, index: unique }
+    sex:              { type: integer, required: true }
+    category_id:      { type: integer, required: true, default: 0 }
+    detail_id:        { type: integer, required: true, default: 0 }
+    choose_flag:      { type: integer, required: true, default: 0 }
+    created_at:   ~
+ 
+  anketo_common_name:
+    common_id:       { type: integer, required: true, primaryKey: true }
+    common_name:     { type: varchar(100), required: true }
+    created_at:    ~
+    updated_at:    ~
+
+  anketo_detail_mapping:
+    detail_id: {type: integer, foreignTable: anketo_category_name, foreignReference: id, required: true }
+    common_id: {type: integer, foreignTable: anketo_common_name, foreignReference: common_id, required: true, required: true }
+    created_at:    ~
+    updated_at:    ~
+  
+  anketo_category_comment:
+    id:         { type: integer, foreignTable: anketo_category, foreignReference: id, required: true, primaryKey: true }
+    category_comment:  {type: varchar(100)}
+    created_at:   ~
+  
+  anketo_user_management:
+    id:       { type: integer, required: true, primaryKey: true }
+    user_name: { type: varchar(100), required: true}
+    user_pwd:  {type: varchar(100), required: true}
+    created_at:  ~

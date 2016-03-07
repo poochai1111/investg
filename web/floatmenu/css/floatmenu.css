@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+.expandedmenu{
+	position: fixed; 
+	z-index:1;
+}
+
+.foldedmenu{
+	position: fixed; 
+	cursor: pointer;
+	z-index:1;
+	background-position: 50% 100%;
+}

@@ -1,0 +1,30 @@
+    /**
+     * Return the dbhost detail.
+     *
+     * @access  public
+     * @param   $info_db_host_mst_id  dbhost master id
+     * @return  array                 dbhost detail
+     */
+    public static function getDetail($info_db_host_mst_id) {
+        $result = array();
+
+        $con = Propel::getConnection();
+
+        $sql = '';
+        $sql .= 'SELECT host_mst.HOST_NAME, host_mst.CLUSTER_ID, host_mst.ENV_CODE
+                   FROM info_db_host_mst host_mst
+                  WHERE host_mst.DELETE_FLG = 0
+                    AND host_mst.INFO_DB_HOST_MST_ID = ? ';
+
+        $stmt = $con->prepareStatement($sql);
+
+        $stmt->setInt(1, $info_db_host_mst_id);
+
+        $rs = $stmt->executeQuery();
+
+        while ($rs->next()) {
+            $result[] = $rs->getRow();
+        }
+
+        return (count($result) > 0)?$result[0]:array();
+    }

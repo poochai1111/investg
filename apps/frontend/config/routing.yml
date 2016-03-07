@@ -1,0 +1,35 @@
+# default rules
+homepage:
+  url:   /
+  param: { module: anketoModules, action: index }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
+  
+show:
+  url:   /
+  param:  { module: anketoModules, action: show}
+  
+count:
+  url:   /
+  param:  { module:anketoModules, action: count}
+  
+select:
+  url:   /
+  param:  { module:anketoModules, action: select}
+
+analysize:
+  url:   /
+  param:  { module: anketoModules, action: analysize}
+  
+login:
+  url:   /
+  param:  { module: anketoModules, action: login}
+  
+confirm:
+  url:   /
+  param:  { module: anketoModules, action: confirm}
